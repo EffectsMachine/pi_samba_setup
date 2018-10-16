@@ -25,20 +25,21 @@ for x in range(1,4):
 		break
 
 for x in range(1,4):
-	if os.system("sudo apt-get install samba samba-common-bin") == 0:
+	if os.system("sudo apt-get install -y samba samba-common-bin") == 0:
 		break
 
 try:
-	replace_num("//etc/samba/smb.conf",';   write list = root, @lpadmin',';   write list = root, @lpadmin\n\n[NASshare]\n   comment = raspberry\n   valid users = pi,root\n   path = /home/\n   browseable = yes\n   create mask = 0777\n   directory mask = 0777')
+	replace_num("//etc/samba/smb.conf",';   write list = root, @lpadmin',';   write list = root, @lpadmin\n\n[NASshare]\n   comment = raspberry\n   valid users = pi,root\n   path = /home/\n   browseable = yes\n   writable = yes\n   create mask = 0777\n   directory mask = 0777')
 except:
 	pass
 
 for x in range(1,4):
-	if os.system("sudo smbpasswd -a pi && 123 && 123") == 0:
+	print('your password?')
+	if os.system("sudo smbpasswd -a pi") == 0:
 		break
 
 for x in range(1,4):
 	if os.system("sudo /etc/init.d/samba restart") == 0:
 		break
 
-print('name NASshare\npasswd 123')
+print('name NASshare')
