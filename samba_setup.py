@@ -29,7 +29,7 @@ for x in range(1,4):
 		break
 
 try:
-	replace_num("//etc/samba/smb.conf",';   write list = root, @lpadmin',';   write list = root, @lpadmin\n\n[NASshare]\n   comment = raspberry\n   valid users = pi,root\n   path = /home/\n   browseable = yes\n   writable = yes\n   create mask = 0777\n   directory mask = 0777')
+	replace_num("//etc/samba/smb.conf",';   write list = root, @lpadmin',';   write list = root, @lpadmin\n\n[NASshare]\n   comment = raspberry\n   valid users = pi,root\n   path = /home/\n   browseable = yes\n   writable = yes\n   create mask = 0777\n   directory mask = 0777\n   guest ok = yes\n   read only = no')
 except:
 	pass
 
